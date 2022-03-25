@@ -56,8 +56,13 @@ class CommentServiceMockitoTest {
 	}
 	
 	@Test
-	void upVote() {
-		
+	void addCommentDto() {
+		Comment comment = new Comment(3, "Good", 5, true);
+		Mockito.when(comRepo.save(comment)).thenReturn(comment);
+		assertEquals(3, comment.getCommentId());
+		assertEquals("Good", comment.getCommentDescription());
+		assertEquals(5, comment.getVotes());
+		assertEquals(true, comment.isVoteUp());
 	}
 
 }
